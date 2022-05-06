@@ -119,6 +119,11 @@ window.addEventListener('load', function(){
       outElm.innerText = (5 + breakDeluxeBonusRate()).toFixed(3) + "x";
     });
     break;
+    case 'break-bonus-rate-deluxe':
+    outputList.push(function(){
+      outElm.innerText = (0.01 / noteCount.break).toMaimaiPercentage();
+    });
+    break;
     case 'score-deluxe-max':
     outputList.push(function(){
       outElm.innerText = totalScoreDeluxeMAX().toGroupedDigit();
