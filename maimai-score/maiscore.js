@@ -8,6 +8,12 @@ window.addEventListener('load', function(){
   Object.prototype.tapInside = function(callback){
     callback.call(this, this);
   };
+  Number.prototype.toGroupedDigit = function(){
+    return this.toLocaleString('en-US');
+  };
+  Number.prototype.toMaimaiPercentage = function(){
+    return (this * 100).toFixed(4) + "%";
+  };
   function totalScore(){
     return Object.entries(noteCount).reduce(function(score, noteData){
       var noteType = noteData[0];
@@ -74,13 +80,13 @@ window.addEventListener('load', function(){
     outputList.push(function(){
       var scoreElm = entryElm.children[2];
       var scoreNote = noteRate[entryType] * inputElm.valueAsNumber;
-      scoreElm.innerText = scoreNote.toFixed(0);
+      scoreElm.innerText = scoreNote.toGroupedDigit();
     });
     outputList.push(function(){
       var rateElm = entryElm.children[3];
       var scoreNote = noteRate[entryType] * inputElm.valueAsNumber;
-      var rateNote = scoreNote / totalScore();
-      rateElm.innerText = (rateNote * 100).toFixed(6) + "%";
+      var rateNote = totalScore() ? scoreNote / totalScore() : 0.0;
+      rateElm.innerText = rateNote.toMaimaiPercentage();
     });
   });
   document.querySelectorAll('tr[data-result]').forEach(function(outputElm){
@@ -89,23 +95,23 @@ window.addEventListener('load', function(){
     switch(outType){
     case 'tap-percent':
     outputList.push(function(){
-      var oneRate = 500 / totalScore();
-      outElm.innerText = (oneRate * 100).toFixed(6) + "%";
+      var oneRate = totalScore() ? 500 / totalScore() : 0;
+      outElm.innerText = oneRate.toMaimaiPercentage();
     });
     break;
     case 'score-standard-sss':
     outputList.push(function(){
-      outElm.innerText = totalScore().toFixed(0);
+      outElm.innerText = totalScore().toGroupedDigit();
     });
     break;
     case 'score-standard-max':
     outputList.push(function(){
-      outElm.innerText = totalScoreMAX().toFixed(0);
+      outElm.innerText = totalScoreMAX().toGroupedDigit();
     });
     break;
     case 'break-rate':
     outputList.push(function(){
-      outElm.innerText = (100 * breakTapRate()).toFixed(6) + "%";
+      outElm.innerText = breakTapRate().toMaimaiPercentage();
     });
     break;
     case 'break-bonus-deluxe':
@@ -115,7 +121,7 @@ window.addEventListener('load', function(){
     break;
     case 'score-deluxe-max':
     outputList.push(function(){
-      outElm.innerText = totalScoreDeluxeMAX().toFixed(0);
+      outElm.innerText = totalScoreDeluxeMAX().toGroupedDigit();
     });
     break;
     }
