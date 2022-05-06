@@ -4,13 +4,24 @@
 </head>
 <body>
   <style>
-    .ali-right { text-align: right; }
+  .ali-right {
+   text-align: right;
+  }
+  #input-table tr td:nth-child(3) {
+    width: 8em;
+  }
+  #input-table tr td:nth-child(4) {
+    width: 7em;
+  }
+  #output-table tr td:nth-child(2) {
+    width: 8em;
+  }
   </style>
   <h1>maimai DX Score Conversion</h1>
   <p>Created by Rei_Fan49.<br>
   <em>Sometimes standardized scoring is a dumb measure.</em></p>
   <h1>Input</h1>
-  <table>
+  <table id=input-table>
     <tbody>
       <tr data-entry=tap>
         <td>Tap</td>
@@ -45,7 +56,7 @@
     </tbody>
   </table>
   <h2>Output</h2>
-  <table>
+  <table id=output-table>
     <tbody>
       <tr data-result=tap-percent>
         <td>Tap Rate</td>
