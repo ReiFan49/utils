@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Blue Archive XP Adjust</title>
+</head>
+<body>
+  <style>
+    .xp-grid {
+      display: grid;
+      max-width: 640px;
+      text-align: center;
+      grid-template-columns: 3fr 5fr 5fr 5fr 5fr 5fr;
+    }
+    .xp-grid-offset-2 {
+      grid-column: 2;
+    }
+    .xp-grid-group {
+      display: contents;
+    }
+    .xp-grid-header {
+      font-weight: bold;
+    }
+    .xp-grid-group > div:nth-child(2) {
+    }
+    .xp-grid-group > div:nth-child(3) {
+    }
+    .xp-grid-group > div:nth-child(4) {
+    }
+    .xp-grid-group > div:nth-child(5) {
+    }
+    .xp-grid input {
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+  <h1>Blue Archive XP Down-Greedy</h1>
+  <p>Created by Rei_Fan49.</br>
+  <em>Perform greedy lookup from below sounds fun.</em></p>
+  <h2>Input</h2>
+  <div class=xp-grid>
+    <div class="xp-grid-group xp-grid-header">
+      <div class="xp-grid-offset-2">T1</div>
+      <div>T2</div>
+      <div>T3</div>
+      <div>T4</div>
+      <div></div>
+    </div>
+    <div class="xp-grid-group" id='xp-target'>
+      <div>Target</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="xp-grid-group" id='xp-greed-upper'>
+      <div><abbr title="Values obtained from Auto Select">Auto</abbr></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <h2>Output</h2>
+  <div class=xp-grid>
+    <div class="xp-grid-group xp-grid-header">
+      <div class="xp-grid-offset-2">T1</div>
+      <div>T2</div>
+      <div>T3</div>
+      <div>T4</div>
+      <div></div>
+    </div>
+    <div class="xp-grid-group" id='xp-greed-lower'>
+      <div>Adjusted</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <p><em>Numbers are shown in 1 T1 EXP unit.</em></p>
+  <script src="baxpgreed.js"></script>
+</body>
+</html>
